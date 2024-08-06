@@ -1,0 +1,14 @@
+/* Rating.css */
+.rating {
+    font-size: 1.5em;
+    color: #e0e0e0; /* Gray color for unfilled stars */
+  }
+  
+  .star {
+    margin: 0 2px;
+  }
+  
+  .star.filled {
+    color: #f39c12; /* Gold color for filled stars */
+  }
+  

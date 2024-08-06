@@ -3,64 +3,29 @@ import {
   Drawer,
   List,
   ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
-  Typography,
-  Divider,
-  useTheme,
-  useMediaQuery,
+  Toolbar,
 } from "@mui/material";
-import {
-  MovieFilter,
-  Star,
-  Upcoming,
-  LocalMovies,
-  EmojiEmotions,
-  TheaterComedy,
-  Theaters,
-} from "@mui/icons-material";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
 
 const drawerWidth = 240;
 
-const Explore = [
-  { name: "Trending", icon: <MovieFilter /> },
-  { name: "Top Rated", icon: <Star /> },
-  { name: "shoping", icon: <Upcoming /> },
-];
-
-const genres = [
-  { name: "Action", icon: <LocalMovies /> },
-  { name: "Adventure", icon: <Theaters /> },
-  { name: "Animation", icon: <EmojiEmotions /> },
-  { name: "Comedy", icon: <TheaterComedy /> },
-];
-
-function Sidebar({ mobileOpen, handleDrawerToggle }) {
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
-
+function ResponsiveDrawer({ mobileOpen, handleDrawerToggle }) {
   const drawer = (
     <div>
-      <Typography variant="h6" sx={{ my: 2, textAlign: "center" }}>
-        Categories
-      </Typography>
+      <Toolbar /> {/* This empty Toolbar acts as a spacer */}
       <List>
-        {Explore.map((category) => (
-          <ListItem button key={category.name}>
-            <ListItemIcon>{category.icon}</ListItemIcon>
-            <ListItemText primary={category.name} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <Typography variant="h6" sx={{ my: 2, textAlign: "center" }}>
-        Genres
-      </Typography>
-      <List>
-        {genres.map((genre) => (
-          <ListItem button key={genre.name}>
-            <ListItemIcon>{genre.icon}</ListItemIcon>
-            <ListItemText primary={genre.name} />
+        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
           </ListItem>
         ))}
       </List>
@@ -69,22 +34,16 @@ function Sidebar({ mobileOpen, handleDrawerToggle }) {
 
   return (
     <Drawer
-      variant={isDesktop ? "permanent" : "temporary"}
-      open={isDesktop ? true : mobileOpen}
-      onClose={handleDrawerToggle}
-      ModalProps={{
-        keepMounted: true, // Better open performance on mobile.
-      }}
+      variant="permanent"
       sx={{
-        display: { xs: "block", sm: "block" },
+        display: { xs: "none", sm: "block" },
         "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
       }}
+      open
     >
-      <div style={{marginTop: '60px'}}>
-      </div>
       {drawer}
     </Drawer>
   );
 }
 
-export default Sidebar;
+export default ResponsiveDrawer;
