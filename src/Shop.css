@@ -1,0 +1,47 @@
+header {
+	font-size: 20px;
+	background-color:rgb(16, 37, 231);
+	color: wheat;
+	padding: 30px;
+	text-align: center;
+	
+	
+}
+nav ul {
+	list-style: none;
+	margin: 0;  
+	padding: 10px;
+	display: flex;
+	justify-content: space-around;
+	background-color: rgba(20, 1, 1, 0.856);
+}
+
+nav li {
+	margin-right: 20px;
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+}
+
+section {
+	background-color: #fff;
+	padding: 20px;
+	margin-bottom: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+footer {
+	background-color: #333;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+	clear: both;
+}
